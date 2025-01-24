@@ -9,10 +9,11 @@ import { toSignal } from '@angular/core/rxjs-interop';
 })
 export class CategoryService {
 
-  private readonly apiUrl = environment.apiUrl;
-  private readonly httpClient = inject(HttpClient);
-  private readonly categories$ = this.httpClient.get<ICategory[]>(`${this.apiUrl}/categories`);
-  public categories = toSignal(this.categories$, {
+  private readonly _apiUrl = environment.apiUrl;
+  private readonly _httpClient = inject(HttpClient);
+  private readonly _categories$ = this._httpClient.get<ICategory[]>(`${this._apiUrl}/categories`);
+  
+  public categories = toSignal(this._categories$, {
     initialValue: [] as ICategory[]
   });
 
