@@ -17,7 +17,5 @@ const PIPES = [AsyncPipe]
 })
 export class CategoryComponent {
   
-    private readonly categoryService = inject(CategoryService);
-  
-    public categories$ = this.categoryService.get();
+  private readonly categoryService = inject(CategoryService);
 }
