@@ -9,17 +9,17 @@ const COMPONENTS = [
 ];
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [...COMPONENTS],
-  template: `
+    selector: 'app-root',
+    standalone: true,
+    imports: [...COMPONENTS],
+    template: `
     <div class="relative min-h-screen w-full">
       <app-theme-toggle />
 
       <app-main/>
     </div>
   `,
-  styles: ``,
+    styles: ``
 })
 export class AppComponent implements OnInit {
   private readonly themeService = inject(ThemeService);
