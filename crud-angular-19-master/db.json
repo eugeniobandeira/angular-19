@@ -3,27 +3,27 @@
   "categories": [
     {
       "id": "1",
-      "name": "Casa",
+      "name": "Home",
       "color": "green"
     },
     {
       "id": "2",
-      "name": "Estudo",
+      "name": "Study",
       "color": "orange"
     },
     {
       "id": "3",
-      "name": "Trabalho",
+      "name": "Work",
       "color": "blue"
     },
     {
       "id": "4",
-      "name": "Pessoal",
+      "name": "Personal",
       "color": "red"
     },
     {
       "id": "5",
-      "name": "Saúde",
+      "name": "Health",
       "color": "purple"
     }
   ]
