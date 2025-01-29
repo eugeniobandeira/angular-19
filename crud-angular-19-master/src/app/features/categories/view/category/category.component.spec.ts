@@ -1,17 +1,19 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CategoryComponent } from './category.component';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 
 describe('CategoryComponent', () => {
+
   let component: CategoryComponent;
   let fixture: ComponentFixture<CategoryComponent>;
 
-  beforeEach(async(() => {
+  beforeEach((() => {
     TestBed.configureTestingModule({
-      declarations: [ CategoryComponent ]
+      imports: [CategoryComponent ],
+      providers: [provideHttpClient(), provideHttpClientTesting()],
     })
     .compileComponents();
   }));

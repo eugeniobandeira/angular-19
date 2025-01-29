@@ -5,12 +5,12 @@ import { MainListComponent } from "../../components/main-list/main-list.componen
 const COMPONENTS = [MainListComponent, ColorsListComponent];
 
 @Component({
-  selector: 'app-category',
-  templateUrl: './category.component.html',
-  styleUrls: ['./category.component.scss'],
-  standalone: true,
-  imports: [...COMPONENTS],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-category',
+    templateUrl: './category.component.html',
+    styleUrls: ['./category.component.scss'],
+    imports: [...COMPONENTS],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
 })
 export class CategoryComponent {
   
