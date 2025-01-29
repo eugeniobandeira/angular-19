@@ -27,9 +27,8 @@ export class TaskService {
     return tasks.sort((a, b) => a.title?.localeCompare(b.title));
   }
 
-  public create(payload: Partial<ITask>): Observable<ITask> {
-    return this._httpClient.post<ITask>(`${this._apiUrl}/tasks`, payload)
-    .pipe(tap(tasks => this.updateTaskInList(tasks)));
+  public create(task: Partial<ITask>): Observable<ITask> {
+    return this._httpClient.post<ITask>(`${this._apiUrl}/tasks`, task);
   }
 
   public update(updated: ITask): Observable<ITask> {
