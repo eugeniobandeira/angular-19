@@ -23,8 +23,8 @@ describe('Service: Category', () => {
 
   it('should fetch categories from API', () => {
     const mockCategories: ICategory[] = [
-      { id: '1', name: 'Category 1', color: 'green' },
-      { id: '2', name: 'Category 2', color: 'white' }
+      { id: '1', name: 'green', color: 'green' },
+      { id: '2', name: 'white', color: 'white' }
     ];
 
     service.categories(); 
