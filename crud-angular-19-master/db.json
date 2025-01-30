@@ -1,5 +1,24 @@
 {
-  "tasks": [],
+  "tasks": [
+    {
+      "id": "ea95",
+      "title": "Study math",
+      "categoryId": "2",
+      "isCompleted": false
+    },
+    {
+      "id": "68fe",
+      "title": "Watch tv",
+      "categoryId": "4",
+      "isCompleted": false
+    },
+    {
+      "id": "78a0",
+      "title": "Do code review",
+      "categoryId": "3",
+      "isCompleted": false
+    }
+  ],
   "categories": [
     {
       "id": "1",
