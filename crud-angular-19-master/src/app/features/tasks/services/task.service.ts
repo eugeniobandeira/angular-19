@@ -14,6 +14,7 @@ export class TaskService {
 
   public tasks = signal<ITask[]>([]);
   public numberOfTasks = computed(() => this.tasks().length);
+  public isLoading = signal(false);
 
   public get(): Observable<ITask[]> { 
     return this._httpClient.get<ITask[]>(`${this._apiUrl}/tasks`)
@@ -37,10 +38,11 @@ export class TaskService {
   }
 
   public updateList(newTask: ITask): void {
-    const updatedTasks = [...this.tasks(), newTask];
-    const sortedTasks = this.getSorted(updatedTasks);
+    this.tasks.update(tasks => {
+      const newTaskList = [...tasks, newTask];
 
-    this.tasks.set(sortedTasks);
+      return this.getSorted(newTaskList);
+    })
   }
 
   public updateTaskInList(updatedTask: ITask): void {
