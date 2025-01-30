@@ -1,7 +1,12 @@
 <div class="grid grid-cols-12 gap-2 mt-8">
   <app-include-task-form class="col-span-11" />
 
-  <div class="col-span-1 flex items-start">
+  <div 
+  [ngClass]="{
+    'opacity-30': taskService.isLoading(),
+    'opacity-100': !taskService.isLoading(),
+  }"
+    class="col-span-1 flex items-start">
     <span class="{{
       colorVariants[selectedCategoryId()]
       }} rounded-full w-10 h-10"></span>
