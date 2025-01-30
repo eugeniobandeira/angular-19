@@ -1,4 +1,8 @@
 <form 
+  [ngClass]="{
+    'cursor-not-allowed animate-pulse': isIncludeTaskFormDisabled(),
+    'cursor-pointer': !isIncludeTaskFormDisabled(),
+  }"
   [formGroup]="newTaskForm"
   autocomplete="off" 
   class="flex flex-row gap-2 select-none"
