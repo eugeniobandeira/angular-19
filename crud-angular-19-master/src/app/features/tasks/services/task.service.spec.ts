@@ -1,4 +1,4 @@
-import { TestBed, waitForAsync } from '@angular/core/testing';
+import { TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { TaskService } from './task.service';
 import { HttpErrorResponse, provideHttpClient } from '@angular/common/http';
 import {
@@ -87,19 +87,6 @@ describe('TaskService', () => {
   });
 
   describe('create', () => {
-    it('should create a new task with waitForAsync', waitForAsync(() => {
-      taskService
-      .create(MOCKED_TASK)
-      .subscribe(() => {
-        expect(taskService.tasks()[0]).toEqual(MOCKED_TASK);
-        expect(taskService.tasks().length).toEqual(1);
-      });
-
-      const req = httpTestingController.expectOne(`${apiUrl}/tasks`);
-      req.flush(MOCKED_TASK);
-      expect(req.request.method).toBe('POST');
-    }));
-
     it('should create a new task', () => {
       let task: ITask | undefined;
 
