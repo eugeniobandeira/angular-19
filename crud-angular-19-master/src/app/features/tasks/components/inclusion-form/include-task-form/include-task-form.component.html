@@ -8,7 +8,7 @@
   class="flex flex-row gap-2 select-none"
 >
   <mat-form-field class="w-full">
-    <mat-label>Tasks</mat-label>
+    <mat-label data-testid="titleLabel">Tasks</mat-label>
     <input 
       formControlName="title" 
       matInput 
@@ -19,8 +19,9 @@
   </mat-form-field>
 
   <mat-form-field>
-    <mat-label>Category</mat-label>
+    <mat-label data-testid="categoryLabel">Category</mat-label>
     <mat-select 
+      data-testid="matSelect"
       formControlName="categoryId"
       (selectionChange)="selectionChangeHandler($event)"
       (keyup.enter)="onAdd()"  
