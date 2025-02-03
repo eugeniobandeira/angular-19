@@ -9,4 +9,4 @@ services:
     container_name: my-task-board
     restart: on-failure
     ports:
-      - 8080:80
+      - 5000:4200
