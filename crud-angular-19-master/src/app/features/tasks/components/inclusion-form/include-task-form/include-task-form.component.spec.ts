@@ -1,5 +1,5 @@
 /* tslint:disable:no-unused-variable */
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { IncludeTaskFormComponent } from './include-task-form.component';
 import { CategoryService } from '../../../../categories/services/category.service';
 import { Observable, of } from 'rxjs';
@@ -93,6 +93,60 @@ describe('IncludeTaskFormComponent', () => {
 
         expect(showSnackBarSpy).toHaveBeenCalledWith(message, 4000, 'end', 'bottom');
     });
+
+    it('should enable/disable newTaskForm and set isIncludeTaskFormDisabled when taskService.isLoadingTask toggle', () => {
+      const newTaskForm = component.newTaskForm;
+
+      taskService.isLoading.set(true);
+
+      expect(component.isIncludeTaskFormDisabled()).toBeTruthy();
+      expect(newTaskForm.disabled).toBeTruthy();
+
+      taskService.isLoading.set(false);
+
+      expect(component.isIncludeTaskFormDisabled()).toBeFalsy();
+      expect(newTaskForm.disabled).toBeFalsy();
+    });
     
+  })
+
+  describe('onAdd', () => {
+    it('should do nothing when newTaskForm is invalid', () => {
+      component.onAdd();
+
+      const createTaskSpy = jest
+        .spyOn(taskService, 'create')
+        .mockReturnValue(of(MOCKED_TASK));
+
+      expect(createTaskSpy).not.toHaveBeenCalled();
+      expect(component.isIncludeTaskFormDisabled()).toBeFalsy();;
+    });
+
+    it('should call taskService.create, updateTaskInList, snackBarConfigHandler and update value', fakeAsync(() => {
+      const newTaskForm = component.newTaskForm;
+
+      newTaskForm.controls.title.setValue(MOCKED_TASK.title);
+      newTaskForm.controls.categoryId.setValue(MOCKED_TASK.categoryId);
+
+      const createTaskSpy = jest
+       .spyOn(taskService, 'create')
+       .mockReturnValue(of(MOCKED_TASK));
+
+       const updateTaskInListSpy = jest
+       .spyOn(taskService, 'updateTaskInList')
+       .mockImplementation(() => {});
+
+      const snackbarConfigHandlerSpy = jest
+       .spyOn(component,'snackbarConfigHandler')
+       .mockImplementation(() => {});
+
+      component.onAdd();
+
+      tick(4000);
+
+      expect(createTaskSpy).toHaveBeenCalled();
+      expect(updateTaskInListSpy).toHaveBeenCalledWith(MOCKED_TASK);
+      expect(snackbarConfigHandlerSpy).toHaveBeenCalledWith('Task added successfully');
+    }));
   })
 });
